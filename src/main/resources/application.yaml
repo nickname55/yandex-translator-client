@@ -1,0 +1,13 @@
+app:
+  apikey: apikey
+  proxySettings:
+    http:
+      proxyHost: myproxy.com
+      proxyPort: 3128
+      proxyLogin: http.proxyLogin
+      proxyPassword: http.proxyPassword
+    https:
+      proxyHost: https.proxyHost
+      proxyPort: https.proxyPort
+      proxyLogin: https.proxyLogin
+      proxyPassword: https.proxyPassword

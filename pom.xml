@@ -6,7 +6,7 @@
 
 	<groupId>com.pampushko.translators</groupId>
 	<artifactId>yandex-translator-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
@@ -20,10 +20,19 @@
 		<maven.compiler.testTarget>1.8</maven.compiler.testTarget>
 		<maven.compiler.testSource>1.8</maven.compiler.testSource>
 
-		<main.class></main.class>
+		<main.class>com.pampushko.translators.Application</main.class>
 
 		<!-- Skips unit tests -->
 		<maven.test.unit.skip>true</maven.test.unit.skip>
+
+		<sl4j.version>1.7.25</sl4j.version>
+		<logback-classic.version>1.2.3</logback-classic.version>
+		<retrofit.version>2.3.0</retrofit.version>
+		<okhttp3.logging-interceptor.version>3.8.0</okhttp3.logging-interceptor.version>
+		<lombok.version>1.16.16</lombok.version>
+		<guava.version>25.0-jre</guava.version>
+		<cfg4j.version>4.4.1</cfg4j.version>
+
 	</properties>
 
 	<dependencies>
@@ -31,15 +40,78 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
+			<version>${sl4j.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
+			<version>${logback-classic.version}</version>
 		</dependency>
 		<!-- логирование sl4j конец-->
+
+
+		<!-- retrofit 2 и сопутствующие зависимости начало -->
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-gson</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>adapter-rxjava2</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>${okhttp3.logging-interceptor.version}</version>
+		</dependency>
+		<!-- retrofit 2 и сопутствующие зависимости конец -->
+
+		<!-- lombook начало -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- lombook конец -->
+
+		<!-- google guava начало -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<!-- google guava конец -->
+
+		<!-- cfg4j начало -->
+		<dependency>
+			<groupId>org.cfg4j</groupId>
+			<artifactId>cfg4j-core</artifactId>
+			<version>${cfg4j.version}</version>
+		</dependency>
+		<!-- For Consul integration -->
+		<dependency>
+			<groupId>org.cfg4j</groupId>
+			<artifactId>cfg4j-consul</artifactId>
+			<version>${cfg4j.version}</version>
+		</dependency>
+		<!-- For git integration -->
+		<dependency>
+			<groupId>org.cfg4j</groupId>
+			<artifactId>cfg4j-git</artifactId>
+			<version>${cfg4j.version}</version>
+		</dependency>
+		<!-- cfg4j конец -->
+
 	</dependencies>
 
 	<build>
@@ -83,6 +155,16 @@
 									<mainClass>${main.class}</mainClass>
 								</transformer>
 							</transformers>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
 						</configuration>
 					</execution>
 				</executions>
@@ -99,4 +181,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
