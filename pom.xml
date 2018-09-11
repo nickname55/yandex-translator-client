@@ -164,17 +164,17 @@
 			<version>${cfg4j.version}</version>
 		</dependency>
 		<!-- For Consul integration -->
-		<dependency>
-			<groupId>org.cfg4j</groupId>
-			<artifactId>cfg4j-consul</artifactId>
-			<version>${cfg4j.version}</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>org.cfg4j</groupId>-->
+		<!--<artifactId>cfg4j-consul</artifactId>-->
+		<!--<version>${cfg4j.version}</version>-->
+		<!--</dependency>-->
 		<!-- For git integration -->
-		<dependency>
-			<groupId>org.cfg4j</groupId>
-			<artifactId>cfg4j-git</artifactId>
-			<version>${cfg4j.version}</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>org.cfg4j</groupId>-->
+		<!--<artifactId>cfg4j-git</artifactId>-->
+		<!--<version>${cfg4j.version}</version>-->
+		<!--</dependency>-->
 		<!-- cfg4j конец -->
 
 	</dependencies>
