@@ -32,5 +32,7 @@ public class Application
 		System.out.println(proxyPort);
 		System.out.println(proxyLogin);
 		System.out.println(proxyPassword);
+		
+		ApiClient apiClient = ApiClient.newBuilder().login("").password("").baseUrl("").build();
 	}
 }
