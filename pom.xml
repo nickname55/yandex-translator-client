@@ -4,10 +4,72 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- ================================================================== -->
+	<!-- Self -->
+	<!-- ================================================================== -->
 	<groupId>com.pampushko.translators</groupId>
 	<artifactId>yandex-translator-client</artifactId>
 	<version>0.0.2</version>
+	<name></name>
+	<description>Пример javaFx desktop приложения, которое обращается Yandex Translator API и выполняет
+		перевод текста
+	</description>
+	<packaging>jar</packaging>
+	<url></url>
 
+
+	<!-- ================================================================== -->
+	<!-- Organization -->
+	<!-- ================================================================== -->
+	<organization>
+		<name>Alexander Pampushko projects</name>
+		<url>https://java-java.atlassian.net/wiki</url>
+	</organization>
+
+	<!-- ================================================================== -->
+	<!-- Licenses -->
+	<!-- ================================================================== -->
+	<licenses>
+		<license>
+			<name>Apache License Version 2.0</name>
+			<url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<!-- ================================================================== -->
+	<!-- SCM and Issue Management-->
+	<!-- ================================================================== -->
+	<scm>
+		<connection>scm:git:git@github.com:example/example.git</connection>
+		<developerConnection>scm:git:git@github.com:example/example.git</developerConnection>
+		<url>scm:git:git@github.com:example/example.git</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/example/example/issues</url>
+	</issueManagement>
+
+	<!-- ================================================================== -->
+	<!-- Developers -->
+	<!-- ================================================================== -->
+	<developers>
+		<developer>
+			<name>Alexander Pampushko</name>
+			<id>AlexanderPampushko</id>
+			<email>pampushko@gmail.com</email>
+			<organization>Gazmyas</organization>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+3</timezone>
+		</developer>
+	</developers>
+
+	<!-- ================================================================== -->
+	<!-- Properties -->
+	<!-- ================================================================== -->
 	<properties>
 		<jdk.version>1.8</jdk.version>
 
@@ -35,6 +97,9 @@
 
 	</properties>
 
+	<!-- ================================================================== -->
+	<!-- Dependencies -->
+	<!-- ================================================================== -->
 	<dependencies>
 		<!-- логирование sl4j начало-->
 		<dependency>
@@ -114,6 +179,9 @@
 
 	</dependencies>
 
+	<!-- ================================================================== -->
+	<!-- Build -->
+	<!-- ================================================================== -->
 	<build>
 		<plugins>
 			<plugin>
@@ -123,18 +191,17 @@
 				<executions>
 					<execution>
 						<goals>
-							<goal>exec</goal>
+							<goal>java</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<executable>maven</executable>
-					<!-- optional -->
+					<executable>mvn</executable>
 					<workingDirectory>/tmp</workingDirectory>
-					<arguments>
-						<argument>-X</argument>
-						<argument>myproject:dist</argument>
-					</arguments>
+					<!--<arguments>-->
+					<!--<argument>-X</argument>-->
+					<!--<argument>myproject:dist</argument>-->
+					<!--</arguments>-->
 					<mainClass>${main.class}</mainClass>
 				</configuration>
 			</plugin>
