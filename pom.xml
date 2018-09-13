@@ -95,6 +95,9 @@
 		<guava.version>25.0-jre</guava.version>
 		<cfg4j.version>4.4.1</cfg4j.version>
 
+		<junit.jupiter.version>5.2.0</junit.jupiter.version>
+		<junit.platform.version>1.1.0</junit.platform.version>
+		<aspectj.version>1.9.1</aspectj.version>
 	</properties>
 
 	<!-- ================================================================== -->
@@ -176,6 +179,22 @@
 		<!--<version>${cfg4j.version}</version>-->
 		<!--</dependency>-->
 		<!-- cfg4j конец -->
+
+		<!-- junit 5 start -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- junit 5 end -->
 
 	</dependencies>
 

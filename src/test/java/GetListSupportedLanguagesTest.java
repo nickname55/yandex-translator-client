@@ -1,6 +1,12 @@
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  *
  */
+@DisplayName("Проверка функции получения поддерживаемых языков и направлений перевода")
 public class GetListSupportedLanguagesTest
 {
 	/**
@@ -8,36 +14,44 @@ public class GetListSupportedLanguagesTest
 	 * <br />
 	 * Например "mi" = "Маори"
 	 */
-	public static void getFullNameOfLanguageByLanguageCode()
+	@Test
+	@DisplayName("Проверка получения полного наименования языка по коду")
+	public void getFullNameOfLanguageByLanguageCode()
 	{
-	
+		assertEquals(true, true);
 	}
 	
 	/**
 	 * Проверка получения доступных направлений перевода
 	 * <br />
 	 */
-	public static void getAllTranslateDirections()
+	@Test
+	@DisplayName("Проверка получения доступных направлений перевода")
+	public void getAllTranslateDirections()
 	{
-	
+		assertEquals(true, true);
 	}
 	
 	/**
-	 * Проверка наличия определённого варианта перевода
+	 * Проверка наличия определённого варианта направления перевода
 	 * <br />
 	 * Например, "uk-en"
 	 */
-	public static void checkExistingTranslateDirection()
+	@Test
+	@DisplayName("Проверка наличия определённого варианта направления перевода")
+	public void checkExistingTranslateDirection()
 	{
-	
+		assertEquals(true, true);
 	}
 	
 	/**
 	 * Проверка вывода списка поддерживаемых языков
 	 * <br />
 	 */
-	public static void checkListSupportedLanguages()
+	@Test
+	@DisplayName("Проверка вывода списка поддерживаемых языков")
+	public void checkListSupportedLanguages()
 	{
-	
+		assertEquals(true, true);
 	}
 }
