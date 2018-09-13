@@ -140,7 +140,7 @@ public class ApiClient
 	 * 		язык на котором приводить названия доступных языков
 	 * 		<br />
 	 */
-	SupportedLanguages getListSupportedLanguages(String ui) //ui example: "en"
+	public SupportedLanguages getListSupportedLanguages(String ui) //ui example: "en"
 	{
 		SupportedLanguages resultObj = null;
 		try
@@ -162,7 +162,7 @@ public class ApiClient
 	 * Detect the language
 	 * <br />
 	 */
-	Object getLanguageOfText(String hint) //hint example: "en,ru"
+	public Object getLanguageOfText(String hint) //hint example: "en,ru"
 	{
 		Object resultObj = null;
 		try
@@ -184,7 +184,7 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	Object getTranslateOfText(String langPair) //langPair example: "en-ru"
+	public Object getTranslateOfText(String langPair) //langPair example: "en-ru"
 	{
 		Object resultObj = null;
 		
