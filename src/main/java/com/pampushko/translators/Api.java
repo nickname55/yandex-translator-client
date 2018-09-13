@@ -2,9 +2,7 @@ package com.pampushko.translators;
 
 import com.pampushko.translators.models.get_supported_langs.SupportedLanguages;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 /**
  *
@@ -27,8 +25,10 @@ public interface Api
 	 * Detect the language
 	 * <br />
 	 */
-	@GET("detect")
-	Call<Object> getLanguageOfText(@Query("hint") String hint); //hint example: "en,ru"
+	@FormUrlEncoded
+	@POST("detect")
+	Call<LanguageDetectingObj> getLanguageOfText(@Field("text") String text,
+	                                             @Query("hint") String hint); //hint example: "en,ru"
 	
 	/**
 	 * Перевод текста с указанным направлением перевода

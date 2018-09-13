@@ -162,14 +162,14 @@ public class ApiClient
 	 * Detect the language
 	 * <br />
 	 */
-	public Object getLanguageOfText(String hint) //hint example: "en,ru"
+	public LanguageDetectingObj getLanguageOfText(String text, String hint) //hint example: "en,ru"
 	{
-		Object resultObj = null;
+		LanguageDetectingObj resultObj = null;
 		try
 		{
-			Call<Object> call = api.getLanguageOfText(hint);
-			Response<Object> response = call.execute();
-			Object body = response.body();
+			Call<LanguageDetectingObj> call = api.getLanguageOfText(text, hint);
+			Response<LanguageDetectingObj> response = call.execute();
+			LanguageDetectingObj body = response.body();
 			resultObj = body;
 		}
 		catch (IOException ex)
