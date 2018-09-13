@@ -1,9 +1,40 @@
 package com.pampushko.translators;
 
+import com.pampushko.translators.models.get_supported_langs.SupportedLanguages;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
 /**
  *
  */
 public interface Api
 {
-
+	/**
+	 * Получение списка поддерживаемых языков
+	 * Get the list of supported languages
+	 * <br />
+	 *
+	 * @param ui
+	 * 		язык на котором приводить названия доступных языков
+	 */
+	@GET("getLangs")
+	Call<SupportedLanguages> getListSupportedLanguages(@Query("ui") String ui); //ui example: "en"
+	
+	/**
+	 * Определение языка, на котором написан заданный текст.
+	 * Detect the language
+	 * <br />
+	 */
+	@GET("detect")
+	Call<Object> getLanguageOfText(@Query("hint") String hint); //hint example: "en,ru"
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * <br />
+	 */
+	@POST("translate")
+	Call<Object> getTranslateOfText(@Query("lang") String langPair); //langPair example: "en-ru"
 }

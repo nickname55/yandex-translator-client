@@ -3,10 +3,7 @@ package com.pampushko.translators;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -34,6 +31,8 @@ public class RetrofitManager
 	{
 		final String login = apiClient.login;
 		final String password = apiClient.password;
+		final String apiKey = apiClient.apiKey;
+		final String apiKeyQueryParamName = apiClient.apiKeyQueryParamName;
 		
 		//HTTP Basic authentication
 		final String credentials = login + ":" + password;
@@ -55,12 +54,22 @@ public class RetrofitManager
 			@Override
 			public Response intercept(Chain chain) throws IOException
 			{
-				Request request = chain.request().newBuilder()
+				Request originalRequest = chain.request();
+				
+				HttpUrl originalRequestUrl = originalRequest.url();
+				HttpUrl url = originalRequestUrl.newBuilder().addQueryParameter(apiKeyQueryParamName, apiKey).build();
+				
+				Request request = originalRequest.newBuilder()
+						
+						.url(url)
+						
 						.addHeader("Authorization", "Basic dGVzdHJvb3Q6NzEyNTU0")
 						.addHeader("User-Agent", "curl/7.47.0")
 						.addHeader("X-Atlassian-Token", "nocheck")
 						.addHeader("Content-Type", "application/json")
+						.addHeader("Accept", "application/json")
 						.build();
+				
 				return chain.proceed(request);
 			}
 		};
