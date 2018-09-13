@@ -161,8 +161,10 @@ public class ApiClient
 	 * Определение языка, на котором написан заданный текст.
 	 * Detect the language
 	 * <br />
+	 * @param hint Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
+	 * @param text UrlEncoded образец текста, который мы передаём для определения языка
 	 */
-	public LanguageDetectingObj getLanguageOfText(String text, String hint) //hint example: "en,ru"
+	public LanguageDetectingObj getLanguageOfText(String text, String hint) //hint example: "en,ru,de"
 	{
 		LanguageDetectingObj resultObj = null;
 		try

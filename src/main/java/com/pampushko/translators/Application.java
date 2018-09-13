@@ -39,7 +39,7 @@ public class Application
 				("https://translate.yandex" +
 						".net/api/v1.5/tr.json/").build();
 		
-		String hint = "en,ru,de,tr"; //предполагаемые языки для передаваемого образца теста
+		String hint = "en,ru,de,tr"; //Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
 		String text = "1978 yılında ekonomik reformların uygulanmasından beri Çin ekonomisi, Dünya'nın en hızlı " +
 				"büyüyen ekonomilerinden biri olmuştur."; //турецкий язык
 		LanguageDetectingObj language = apiClient.getLanguageOfText(text, hint);
