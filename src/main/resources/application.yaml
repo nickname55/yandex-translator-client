@@ -1,5 +1,5 @@
 app:
-  apikey: apikey
+  apiKey: trnsl.1.1.20150904T170427Z.a9fe635412c9f994.e0dafbb5b92d6a794b77144eef59ec2c85c8b450
   proxySettings:
     http:
       proxyHost: myproxy.com
@@ -11,3 +11,4 @@ app:
       proxyPort: https.proxyPort
       proxyLogin: https.proxyLogin
       proxyPassword: https.proxyPassword
+
