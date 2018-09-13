@@ -98,6 +98,9 @@
 		<junit.jupiter.version>5.2.0</junit.jupiter.version>
 		<junit.platform.version>1.1.0</junit.platform.version>
 		<aspectj.version>1.9.1</aspectj.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+		<junit-platform-surefire-provider.version>1.1.0</junit-platform-surefire-provider.version>
+
 	</properties>
 
 	<!-- ================================================================== -->
@@ -268,12 +271,30 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.21.0</version>
+				<!-- Внимание, более свежие верcии плагина на данный момент не поддеживают работу с JUnit5! -->
+				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
 					<includes>
 						<include>**/*Test.java</include>
 					</includes>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>${junit-platform-surefire-provider.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>5.2.0</version>
+					</dependency>
+					<!--<dependency>-->
+					<!--<groupId>org.aspectj</groupId>-->
+					<!--<artifactId>aspectjweaver</artifactId>-->
+					<!--<version>${aspectj.version}</version>-->
+					<!--</dependency>-->
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
