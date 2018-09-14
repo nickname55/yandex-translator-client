@@ -1,6 +1,8 @@
 package com.pampushko.translators;
 
+import com.pampushko.translators.models.get_language_of_text.LanguageDetectingObj;
 import com.pampushko.translators.models.get_supported_langs.SupportedLanguages;
+import com.pampushko.translators.models.get_translate_of_text.TranslateObj;
 import lombok.extern.slf4j.Slf4j;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -161,8 +163,11 @@ public class ApiClient
 	 * Определение языка, на котором написан заданный текст.
 	 * Detect the language
 	 * <br />
-	 * @param hint Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
-	 * @param text UrlEncoded образец текста, который мы передаём для определения языка
+	 *
+	 * @param hint
+	 * 		Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
+	 * @param text
+	 * 		UrlEncoded образец текста, который мы передаём для определения языка
 	 */
 	public LanguageDetectingObj getLanguageOfText(String text, String hint) //hint example: "en,ru,de"
 	{
@@ -186,15 +191,15 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public Object getTranslateOfText(String langPair) //langPair example: "en-ru"
+	public TranslateObj getTranslateOfText(String text, String translateDirection) //langPair example: "en-ru"
 	{
-		Object resultObj = null;
+		TranslateObj resultObj = null;
 		
 		try
 		{
-			Call<Object> call = api.getTranslateOfText(langPair);
-			Response<Object> response = call.execute();
-			Object body = response.body();
+			Call<TranslateObj> call = api.getTranslateOfText(text, translateDirection);
+			Response<TranslateObj> response = call.execute();
+			TranslateObj body = response.body();
 			resultObj = body;
 		}
 		catch (IOException ex)

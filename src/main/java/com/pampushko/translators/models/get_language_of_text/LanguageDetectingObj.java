@@ -10,12 +10,23 @@ import lombok.extern.slf4j.Slf4j;
 /**
  *
  */
-@Getter
 @Setter
+@Getter
 @EqualsAndHashCode(callSuper = false)
 @Slf4j
-public class TextObj extends BaseModel
+public class LanguageDetectingObj extends BaseModel
 {
-	@SerializedName("text")
-	String text;
+	/**
+	 * Пример:
+	 * <br>
+	 */
+	@SerializedName("code")
+	Integer code;
+	
+	/**
+	 * Пример:
+	 * <br>
+	 */
+	@SerializedName("lang")
+	String lang;
 }

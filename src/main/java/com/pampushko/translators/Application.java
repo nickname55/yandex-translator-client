@@ -1,6 +1,7 @@
 package com.pampushko.translators;
 
 import com.pampushko.translators.config.AppProperties;
+import com.pampushko.translators.models.get_translate_of_text.TranslateObj;
 import lombok.extern.slf4j.Slf4j;
 import org.cfg4j.provider.ConfigurationProvider;
 
@@ -39,20 +40,19 @@ public class Application
 				("https://translate.yandex" +
 						".net/api/v1.5/tr.json/").build();
 		
-		String hint = "en,ru,de,tr"; //Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
-		String text = "1978 yılında ekonomik reformların uygulanmasından beri Çin ekonomisi, Dünya'nın en hızlı " +
-				"büyüyen ekonomilerinden biri olmuştur."; //турецкий язык
-		LanguageDetectingObj language = apiClient.getLanguageOfText(text, hint);
+		String translateDirection = "ru-en";
+		String sourceText = "Том так и не смог сказать Мэри, что любит её."; //Tom was never able to tell Mary that he loved her.
+		TranslateObj translateObj = apiClient.getTranslateOfText(sourceText, translateDirection);
 		
 		System.out.println();
 		System.out.println();
-		System.out.println("получили код языка из переданного образца текста (tr-турецкий)");
+		System.out.println("Исходный текст");
 		System.out.println("----------------------------------------------");
-		System.out.println(language.getLang());
+		System.out.println(sourceText);
 		System.out.println();
 		System.out.println();
+		System.out.println("Переведённый текст:");
 		System.out.println("----------------------------------------------");
-		System.out.println("Исходный текст:");
-		System.out.println(text);
+		System.out.println(translateObj.getText().get(0));
 	}
 }
