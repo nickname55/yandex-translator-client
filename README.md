@@ -9,12 +9,10 @@ package com.pampushko.translators.examples;
 
 import com.pampushko.translators.ApiClient;
 import com.pampushko.translators.models.TranslationResult;
-import lombok.extern.slf4j.Slf4j;
 import org.cfg4j.provider.ConfigurationProvider;
 
 import static com.pampushko.translators.config.Config4j.configurationProvider;
 
-@Slf4j
 class Application
 {
 	public static void main(String[] args)
@@ -57,6 +55,7 @@ class Application
 		System.out.println(translationResult.getText().get(0));
 	}
 }
+
 ```
   
 ## Contributors
