@@ -23,7 +23,6 @@ class Application
 		
 		String translateDirection = "ru-en";
 		String sourceText = "Том так и не смог сказать Мэри, что любит её.";
-		//Tom was never able to tell Mary that he loved her.
 		
 		TranslationResult translationResult = apiClient.translateText(sourceText, translateDirection);
 		
@@ -33,13 +32,17 @@ class Application
 	public static ApiClient buildApiClient()
 	{
 		ConfigurationProvider confProvider = configurationProvider("application.yaml");
+		
 		String apiKey = confProvider.getProperty("app.apiKey", String.class);
+		String apiKeyQueryParamName = confProvider.getProperty("app.apiKeyQueryParamName", String.class);
+		String baseUrl = confProvider.getProperty("app.baseUrl", String.class);
 		
 		ApiClient apiClient = ApiClient.newBuilder()
-				.apiKeyQueryParamName("key")
+				.apiKeyQueryParamName(apiKeyQueryParamName)
 				.apiKey(apiKey)
-				.baseUrl("https://translate.yandex.net/api/v1.5/tr.json/")
+				.baseUrl(baseUrl)
 				.build();
+		
 		return apiClient;
 	}
 	

@@ -19,9 +19,14 @@ class Application
 	public static void main(String[] args)
 	{
 		String apiKey = confProvider.getProperty("app.apiKey", String.class);
+		String apiKeyQueryParamName = confProvider.getProperty("app.apiKeyQueryParamName", String.class);
+		String baseUrl = confProvider.getProperty("app.baseUrl", String.class);
 		
-		ApiClient apiClient = ApiClient.newBuilder().apiKeyQueryParamName("key").apiKey(apiKey).baseUrl
-				("https://translate.yandex.net/api/v1.5/tr.json/").build();
+		ApiClient apiClient = ApiClient.newBuilder()
+				.apiKeyQueryParamName(apiKeyQueryParamName)
+				.apiKey(apiKey)
+				.baseUrl(baseUrl)
+				.build();
 		
 		String translateDirection = "ru-en";
 		String sourceText = "Том так и не смог сказать Мэри, что любит её."; //Tom was never able to tell Mary that he loved her.
