@@ -1,7 +1,6 @@
-package com.pampushko.translators.models.get_supported_langs;
+package com.pampushko.translators.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.pampushko.translators.models.BaseModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +16,7 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(callSuper = false)
 @Slf4j
-public class SupportedLanguages extends BaseModel
+public class SupportedLanguagesResult extends BaseModel
 {
 	@SerializedName("dirs")
 	Set<String> dirs;

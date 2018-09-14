@@ -1,8 +1,8 @@
 package com.pampushko.translators;
 
-import com.pampushko.translators.models.get_language_of_text.LanguageDetectingObj;
-import com.pampushko.translators.models.get_supported_langs.SupportedLanguages;
-import com.pampushko.translators.models.get_translate_of_text.TranslateObj;
+import com.pampushko.translators.models.LanguageDetectingResult;
+import com.pampushko.translators.models.SupportedLanguagesResult;
+import com.pampushko.translators.models.TranslationResult;
 import lombok.extern.slf4j.Slf4j;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -142,14 +142,14 @@ public class ApiClient
 	 * 		язык на котором приводить названия доступных языков
 	 * 		<br />
 	 */
-	public SupportedLanguages getListSupportedLanguages(String ui) //ui example: "en"
+	public SupportedLanguagesResult getListSupportedLanguages(String ui) //ui example: "en"
 	{
-		SupportedLanguages resultObj = null;
+		SupportedLanguagesResult resultObj = null;
 		try
 		{
-			Call<SupportedLanguages> call = api.getListSupportedLanguages(ui);
-			Response<SupportedLanguages> response = call.execute();
-			SupportedLanguages body = response.body();
+			Call<SupportedLanguagesResult> call = api.getListSupportedLanguages(ui);
+			Response<SupportedLanguagesResult> response = call.execute();
+			SupportedLanguagesResult body = response.body();
 			resultObj = body;
 		}
 		catch (IOException ex)
@@ -169,14 +169,14 @@ public class ApiClient
 	 * @param text
 	 * 		UrlEncoded образец текста, который мы передаём для определения языка
 	 */
-	public LanguageDetectingObj getLanguageOfText(String text, String hint) //hint example: "en,ru,de"
+	public LanguageDetectingResult detectTextLanguage(String text, String hint) //hint example: "en,ru,de"
 	{
-		LanguageDetectingObj resultObj = null;
+		LanguageDetectingResult resultObj = null;
 		try
 		{
-			Call<LanguageDetectingObj> call = api.getLanguageOfText(text, hint);
-			Response<LanguageDetectingObj> response = call.execute();
-			LanguageDetectingObj body = response.body();
+			Call<LanguageDetectingResult> call = api.detectTextLanguage(text, hint);
+			Response<LanguageDetectingResult> response = call.execute();
+			LanguageDetectingResult body = response.body();
 			resultObj = body;
 		}
 		catch (IOException ex)
@@ -191,15 +191,15 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public TranslateObj getTranslateOfText(String text, String translateDirection) //langPair example: "en-ru"
+	public TranslationResult translateText(String text, String translateDirection) //langPair example: "en-ru"
 	{
-		TranslateObj resultObj = null;
+		TranslationResult resultObj = null;
 		
 		try
 		{
-			Call<TranslateObj> call = api.getTranslateOfText(text, translateDirection);
-			Response<TranslateObj> response = call.execute();
-			TranslateObj body = response.body();
+			Call<TranslationResult> call = api.translateText(text, translateDirection);
+			Response<TranslationResult> response = call.execute();
+			TranslationResult body = response.body();
 			resultObj = body;
 		}
 		catch (IOException ex)

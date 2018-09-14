@@ -1,4 +1,4 @@
-import com.pampushko.translators.models.get_language_of_text.LanguageDetectingObj;
+import com.pampushko.translators.models.LanguageDetectingResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ public class GetListSupportedLanguagesTest extends BaseTest
 		String hint = "en,ru,de,tr"; //Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
 		String text = "1978 yılında ekonomik reformların uygulanmasından beri Çin ekonomisi, Dünya'nın en hızlı " +
 				"büyüyen ekonomilerinden biri olmuştur."; //турецкий язык
-		LanguageDetectingObj language = apiClient.getLanguageOfText(text, hint);
+		LanguageDetectingResult language = apiClient.detectTextLanguage(text, hint);
 		
 		System.out.println("получили код языка из переданного образца текста (tr-турецкий)");
 		System.out.println("----------------------------------------------");

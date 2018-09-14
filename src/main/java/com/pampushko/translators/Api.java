@@ -1,8 +1,8 @@
 package com.pampushko.translators;
 
-import com.pampushko.translators.models.get_language_of_text.LanguageDetectingObj;
-import com.pampushko.translators.models.get_supported_langs.SupportedLanguages;
-import com.pampushko.translators.models.get_translate_of_text.TranslateObj;
+import com.pampushko.translators.models.LanguageDetectingResult;
+import com.pampushko.translators.models.SupportedLanguagesResult;
+import com.pampushko.translators.models.TranslationResult;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -20,7 +20,7 @@ public interface Api
 	 * 		язык на котором приводить названия доступных языков
 	 */
 	@GET("getLangs")
-	Call<SupportedLanguages> getListSupportedLanguages(@Query("ui") String ui); //ui example: "en"
+	Call<SupportedLanguagesResult> getListSupportedLanguages(@Query("ui") String ui); //ui example: "en"
 	
 	/**
 	 * Определение языка, на котором написан заданный текст.
@@ -34,8 +34,8 @@ public interface Api
 	 */
 	@FormUrlEncoded
 	@POST("detect")
-	Call<LanguageDetectingObj> getLanguageOfText(@Field("text") String text,
-	                                             @Query("hint") String hint); //hint example: "en,ru"
+	Call<LanguageDetectingResult> detectTextLanguage(@Field("text") String text,
+	                                                 @Query("hint") String hint); //hint example: "en,ru"
 	
 	/**
 	 * Перевод текста с указанным направлением перевода
@@ -44,7 +44,7 @@ public interface Api
 	 */
 	@FormUrlEncoded
 	@POST("translate")
-	Call<TranslateObj> getTranslateOfText(@Field("text") String text,
+	Call<TranslationResult> translateText(@Field("text") String text,
 	                                      @Query("lang") String langDirection //направление перевода
 	                                      //	                                              @Query("format") String format,
 	                                      //	                                              @Query("options") String options

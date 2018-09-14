@@ -1,22 +1,19 @@
-package com.pampushko.translators.models.get_translate_of_text;
+package com.pampushko.translators.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.pampushko.translators.models.BaseModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
-
 /**
  *
  */
-@Getter
 @Setter
+@Getter
 @EqualsAndHashCode(callSuper = false)
 @Slf4j
-public class TranslateObj extends BaseModel
+public class LanguageDetectingResult extends BaseModel
 {
 	/**
 	 * Пример:
@@ -31,11 +28,4 @@ public class TranslateObj extends BaseModel
 	 */
 	@SerializedName("lang")
 	String lang;
-	
-	/**
-	 * Пример:
-	 * <br>
-	 */
-	@SerializedName("text")
-	List<String> text;
 }
