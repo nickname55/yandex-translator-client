@@ -11,7 +11,7 @@ import static com.pampushko.translators.config.Config4j.configurationProvider;
  * <br />
  */
 @Slf4j
-public class Application
+class Application
 {
 	public static AppProperties appProperties;
 	public static ConfigurationProvider confProvider;

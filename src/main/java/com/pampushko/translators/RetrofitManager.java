@@ -16,7 +16,7 @@ import java.util.Base64;
  *
  */
 @Slf4j
-public class RetrofitManager
+class RetrofitManager
 {
 	/**
 	 * Создаем Retrofit экземпляр клиента
@@ -47,7 +47,7 @@ public class RetrofitManager
 		
 		//создаем интерсептор для логирования
 		HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-		httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+		httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
 		
 		Interceptor customHeadersInterceptor = new Interceptor()
 		{
