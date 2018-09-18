@@ -82,6 +82,7 @@ class RetrofitManager
 				.readTimeout(7, TimeUnit.SECONDS)
 				.writeTimeout(7, TimeUnit.SECONDS)
 				.connectTimeout(7, TimeUnit.SECONDS)
+				.retryOnConnectionFailure(true)
 				.build();
 		
 		//создаем экземпляр Ретрофита и добавляем к нему HTTP-клиент
