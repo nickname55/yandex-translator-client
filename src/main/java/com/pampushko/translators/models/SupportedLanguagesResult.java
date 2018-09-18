@@ -21,7 +21,6 @@ public class SupportedLanguagesResult extends BaseModel
 	@SerializedName("dirs")
 	Set<String> dirs;
 	
-	//@JsonAdapter(value = LanguageSubObjDeserializer.class)
 	@SerializedName("langs")
 	Map<String, String> languages;
 }

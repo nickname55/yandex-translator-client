@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -78,6 +79,9 @@ class RetrofitManager
 		OkHttpClient httpClient = new OkHttpClient.Builder()
 				.addInterceptor(customHeadersInterceptor)
 				.addInterceptor(httpLoggingInterceptor)
+				.readTimeout(7, TimeUnit.SECONDS)
+				.writeTimeout(7, TimeUnit.SECONDS)
+				.connectTimeout(7, TimeUnit.SECONDS)
 				.build();
 		
 		//создаем экземпляр Ретрофита и добавляем к нему HTTP-клиент
@@ -85,6 +89,7 @@ class RetrofitManager
 				.baseUrl(apiClient.baseUrl)
 				.addConverterFactory(GsonConverterFactory.create(gson))
 				.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+				
 				.client(httpClient)
 				.build();
 		
