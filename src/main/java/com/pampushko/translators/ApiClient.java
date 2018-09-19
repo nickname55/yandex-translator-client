@@ -41,7 +41,7 @@ public class ApiClient
 	 * (Имя параметра может быть, "key" или "apiKey" в зависимости от того как это реализовано в API)
 	 * <br />
 	 */
-	String apiKeyQueryParamName;
+	String apiKeyQueryParamName = "key";
 	
 	/**
 	 * базовый URL
