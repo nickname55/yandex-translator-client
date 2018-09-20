@@ -9,7 +9,7 @@
 	<!-- ================================================================== -->
 	<groupId>com.pampushko.translators</groupId>
 	<artifactId>yandex-translator-client</artifactId>
-	<version>1.0.1</version>
+	<version>2.0.0</version>
 	<name></name>
 	<description>Пример javaFx desktop приложения, которое обращается Yandex Translator API и выполняет
 		перевод текста
