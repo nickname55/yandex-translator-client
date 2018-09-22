@@ -1,5 +1,6 @@
 package com.pampushko.translators;
 
+import com.pampushko.translators.enums.TR_DIRECTION;
 import com.pampushko.translators.models.LanguageDetectingResult;
 import com.pampushko.translators.models.SupportedLanguagesResult;
 import com.pampushko.translators.models.TranslationResult;
@@ -186,12 +187,34 @@ public class ApiClient
 		return resultObj;
 	}
 	
+	//---------------------------------------------------------------
+	
 	/**
 	 * Перевод текста с указанным направлением перевода
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public TranslationResult translateText(String text, String translateDirection) //langPair example: "en-ru"
+	public TranslationResult translate(String text, TR_DIRECTION translateDirection) //langPair example: "en-ru"
+	{
+		return translateText(text, translateDirection.toString());
+	}
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * <br />
+	 */
+	public TranslationResult translate(String text, String translateDirection) //langPair example: "en-ru"
+	{
+		return translateText(text, translateDirection);
+	}
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * <br />
+	 */
+	private TranslationResult translateText(String text, String translateDirection) //langPair example: "en-ru"
 	{
 		TranslationResult resultObj = null;
 		
