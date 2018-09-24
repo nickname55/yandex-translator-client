@@ -10,6 +10,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -48,7 +50,7 @@ public class ApiClient
 	 * базовый URL
 	 * <br />
 	 */
-	String baseUrl;
+	String baseUrl = "https://translate.yandex.net/api/v1.5/tr.json/";
 	
 	/**
 	 * Ссылка на экземпляр интерфейса UpmApi
@@ -194,7 +196,7 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public TranslationResult translate(String text, TR_DIRECTION translateDirection) //langPair example: "en-ru"
+	public String translate(String text, TR_DIRECTION translateDirection) //langPair example: "en-ru"
 	{
 		return translateText(text, translateDirection.toString());
 	}
@@ -204,7 +206,7 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public TranslationResult translate(String text, String translateDirection) //langPair example: "en-ru"
+	public String translate(String text, String translateDirection) //langPair example: "en-ru"
 	{
 		return translateText(text, translateDirection);
 	}
@@ -214,22 +216,73 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	private TranslationResult translateText(String text, String translateDirection) //langPair example: "en-ru"
+	public List<String> translate(List<String> textList, TR_DIRECTION translateDirection) //langPair example: "en-ru"
 	{
-		TranslationResult resultObj = null;
+		return translateText(textList, translateDirection.toString());
+	}
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * <br />
+	 */
+	public List<String> translate(List<String> textList, String translateDirection) //langPair example: "en-ru"
+	{
+		return translateText(textList, translateDirection);
+	}
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * <br />
+	 */
+	private String translateText(String text, String translateDirection) //langPair example: "en-ru"
+	{
+		String result = "";
 		
 		try
 		{
 			Call<TranslationResult> call = api.translateText(text, translateDirection);
 			Response<TranslationResult> response = call.execute();
-			TranslationResult body = response.body();
-			resultObj = body;
+			if (response.body() != null && response.body().getText() != null)
+			{
+				List<String> textList = response.body().getText();
+				if (textList.size() > 0)
+				{
+					result = textList.get(0);
+				}
+			}
 		}
 		catch (IOException ex)
 		{
 			log.error("error", ex);
 		}
 		
-		return resultObj;
+		return result;
+	}
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * <br />
+	 */
+	private List<String> translateText(List<String> textList, String translateDirection) //langPair example: "en-ru"
+	{
+		List<String> resultList = new ArrayList<>();
+		try
+		{
+			Call<TranslationResult> call = api.translateText(textList, translateDirection);
+			Response<TranslationResult> response = call.execute();
+			if (response.body() != null && response.body().getText() != null)
+			{
+				resultList = response.body().getText();
+			}
+		}
+		catch (IOException ex)
+		{
+			log.error("error", ex);
+		}
+		
+		return resultList;
 	}
 }

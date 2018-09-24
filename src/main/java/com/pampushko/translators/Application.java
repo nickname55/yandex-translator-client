@@ -1,12 +1,11 @@
 package com.pampushko.translators;
 
 import com.pampushko.translators.enums.TR_DIRECTION;
-import com.pampushko.translators.models.TranslationResult;
 import lombok.extern.slf4j.Slf4j;
 import org.cfg4j.provider.ConfigurationProvider;
 
-import static java.lang.System.out;
 import static com.pampushko.translators.config.Config4j.configurationProvider;
+import static java.lang.System.out;
 
 @Slf4j
 class Application
@@ -20,7 +19,7 @@ class Application
 		//исходный текст
 		String sourceText = "Том так и не смог сказать Мэри, что любит её.";
 		//выполняем перевод
-		TranslationResult translationResult = apiClient.translate(sourceText, translateDirection);
+		String translationResult = apiClient.translate(sourceText, translateDirection);
 		//печатаем исходный текст и результат перевода
 		printResult(sourceText, translationResult);
 	}
@@ -35,7 +34,7 @@ class Application
 		return apiClient;
 	}
 	
-	public static void printResult(String sourceText, TranslationResult translationResult)
+	public static void printResult(String sourceText, String translationResult)
 	{
 		out.println("Исходный текст");
 		out.println("----------------------------------------------");
@@ -43,6 +42,6 @@ class Application
 		out.println();
 		out.println("Переведённый текст:");
 		out.println("----------------------------------------------");
-		out.println(translationResult.getText().get(0));
+		out.println(translationResult);
 	}
 }

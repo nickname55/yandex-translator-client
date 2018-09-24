@@ -6,6 +6,8 @@ import com.pampushko.translators.models.TranslationResult;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
+
 /**
  *
  */
@@ -40,8 +42,25 @@ public interface Api
 	/**
 	 * Перевод текста с указанным направлением перевода
 	 * Translates text to the specified language.
+	 * todo Для POST-запросов максимальный размер передаваемого текста составляет 10 000 символов. - добавить проверку
 	 * <br />
 	 */
+	
+	@FormUrlEncoded
+	@POST("translate")
+	Call<TranslationResult> translateText(@Field("text") List<String> text,
+	                                      @Query("lang") String langDirection //направление перевода
+	                                      //	                                              @Query("format") String format,
+	                                      //	                                              @Query("options") String options
+	);
+	
+	/**
+	 * Перевод текста с указанным направлением перевода
+	 * Translates text to the specified language.
+	 * todo Для POST-запросов максимальный размер передаваемого текста составляет 10 000 символов. - добавить проверку
+	 * <br />
+	 */
+	
 	@FormUrlEncoded
 	@POST("translate")
 	Call<TranslationResult> translateText(@Field("text") String text,
