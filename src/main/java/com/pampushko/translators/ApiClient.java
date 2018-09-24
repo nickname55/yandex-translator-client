@@ -1,6 +1,7 @@
 package com.pampushko.translators;
 
 import com.pampushko.translators.enums.TR_DIRECTION;
+import com.pampushko.translators.enums.TR_LANG;
 import com.pampushko.translators.models.LanguageDetectingResult;
 import com.pampushko.translators.models.SupportedLanguagesResult;
 import com.pampushko.translators.models.TranslationResult;
@@ -172,21 +173,23 @@ public class ApiClient
 	 * @param text
 	 * 		UrlEncoded образец текста, который мы передаём для определения языка
 	 */
-	public LanguageDetectingResult detectTextLanguage(String text, String hint) //hint example: "en,ru,de"
+	public TR_LANG detectTextLanguage(String text, String hint) //hint example: "en,ru,de"
 	{
-		LanguageDetectingResult resultObj = null;
+		TR_LANG result = null;
 		try
 		{
 			Call<LanguageDetectingResult> call = api.detectTextLanguage(text, hint);
 			Response<LanguageDetectingResult> response = call.execute();
 			LanguageDetectingResult body = response.body();
-			resultObj = body;
+			String language = body.getLang();
+			TR_LANG langEnumValue = TR_LANG.parse(language);
+			result = langEnumValue;
 		}
 		catch (IOException ex)
 		{
 			log.error("error", ex);
 		}
-		return resultObj;
+		return result;
 	}
 	
 	//---------------------------------------------------------------
