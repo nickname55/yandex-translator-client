@@ -1,7 +1,7 @@
 package com.pampushko.translators.examples;
 
 import com.pampushko.translators.ApiClient;
-import com.pampushko.translators.enums.TR_DIRECTION;
+import com.pampushko.translators.enums.DIRECTION_TR;
 import org.cfg4j.provider.ConfigurationProvider;
 
 import static com.pampushko.translators.config.Config4j.configurationProvider;
@@ -14,7 +14,7 @@ class ApplicationSingleText
 		//создаём клиент
 		ApiClient apiClient = buildApiClient();
 		//выбираем направление перевода (с русского на английский)
-		TR_DIRECTION translateDirection = TR_DIRECTION.RU_EN;
+		DIRECTION_TR translateDirection = DIRECTION_TR.RU_EN;
 		//исходный текст
 		String sourceText = "Том так и не смог сказать Мэри, что любит её.";
 		//выполняем перевод

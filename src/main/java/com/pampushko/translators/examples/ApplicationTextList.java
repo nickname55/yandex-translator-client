@@ -1,7 +1,7 @@
 package com.pampushko.translators.examples;
 
 import com.pampushko.translators.ApiClient;
-import com.pampushko.translators.enums.TR_DIRECTION;
+import com.pampushko.translators.enums.DIRECTION_TR;
 import org.cfg4j.provider.ConfigurationProvider;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ class ApplicationTextList
 		//создаём клиент
 		ApiClient apiClient = buildApiClient();
 		//выбираем направление перевода (с русского на английский)
-		TR_DIRECTION translateDirection = TR_DIRECTION.RU_EN;
+		DIRECTION_TR translateDirection = DIRECTION_TR.RU_EN;
 		//исходные тексты
 		List<String> sourceTexts = new ArrayList<String>()
 		{{

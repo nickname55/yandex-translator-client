@@ -3,7 +3,7 @@ package com.pampushko.translators.enums;
 /**
  *
  */
-public enum TR_DIRECTION
+public enum DIRECTION_TR
 {
 	AZ_RU("az-ru"),
 	BE_BG("be-bg"),
@@ -168,7 +168,7 @@ public enum TR_DIRECTION
 	
 	String translateDirection;
 	
-	TR_DIRECTION(String translateDirection)
+	DIRECTION_TR(String translateDirection)
 	{
 		this.translateDirection = translateDirection;
 	}
@@ -190,14 +190,14 @@ public enum TR_DIRECTION
 	 *
 	 * @return The parsed, or null on failure.
 	 */
-	public static TR_DIRECTION parse(String input)
+	public static DIRECTION_TR parse(String input)
 	{
 		if (null == input)
 		{
 			return null;
 		}
 		input = input.trim().replaceAll("_", "-");
-		for (TR_DIRECTION state : values())
+		for (DIRECTION_TR state : values())
 		{
 			if (state.translateDirection.equalsIgnoreCase(input))
 			{

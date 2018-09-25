@@ -1,7 +1,7 @@
 package com.pampushko.translators;
 
-import com.pampushko.translators.enums.TR_DIRECTION;
-import com.pampushko.translators.enums.TR_LANG;
+import com.pampushko.translators.enums.DIRECTION_TR;
+import com.pampushko.translators.enums.LANG_TR;
 import com.pampushko.translators.models.LanguageDetectingResult;
 import com.pampushko.translators.models.SupportedLanguagesResult;
 import com.pampushko.translators.models.TranslationResult;
@@ -173,16 +173,16 @@ public class ApiClient
 	 * @param text
 	 * 		UrlEncoded образец текста, который мы передаём для определения языка
 	 */
-	public TR_LANG detectTextLanguage(String text, String hint) //hint example: "en,ru,de"
+	public LANG_TR detectTextLanguage(String text, String hint) //hint example: "en,ru,de"
 	{
-		TR_LANG result = null;
+		LANG_TR result = null;
 		try
 		{
 			Call<LanguageDetectingResult> call = api.detectTextLanguage(text, hint);
 			Response<LanguageDetectingResult> response = call.execute();
 			LanguageDetectingResult body = response.body();
 			String language = body.getLang();
-			TR_LANG langEnumValue = TR_LANG.parse(language);
+			LANG_TR langEnumValue = LANG_TR.parse(language);
 			result = langEnumValue;
 		}
 		catch (IOException ex)
@@ -199,7 +199,7 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public String translate(String text, TR_DIRECTION translateDirection) //langPair example: "en-ru"
+	public String translate(String text, DIRECTION_TR translateDirection) //langPair example: "en-ru"
 	{
 		return translateText(text, translateDirection.toString());
 	}
@@ -219,7 +219,7 @@ public class ApiClient
 	 * Translates text to the specified language.
 	 * <br />
 	 */
-	public List<String> translate(List<String> textList, TR_DIRECTION translateDirection) //langPair example: "en-ru"
+	public List<String> translate(List<String> textList, DIRECTION_TR translateDirection) //langPair example: "en-ru"
 	{
 		return translateText(textList, translateDirection.toString());
 	}

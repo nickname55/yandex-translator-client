@@ -3,7 +3,7 @@ package com.pampushko.translators.enums;
 /**
  *
  */
-public enum TR_LANG
+public enum LANG_TR
 {
 	AFRIKAANS("af"),
 	AMHARIC("am"),
@@ -101,7 +101,7 @@ public enum TR_LANG
 	
 	String language;
 	
-	TR_LANG(String language)
+	LANG_TR(String language)
 	{
 		this.language = language;
 	}
@@ -123,14 +123,14 @@ public enum TR_LANG
 	 *
 	 * @return The parsed, or null on failure.
 	 */
-	public static TR_LANG parse(String input)
+	public static LANG_TR parse(String input)
 	{
 		if (null == input)
 		{
 			return null;
 		}
 		input = input.trim().replaceAll(" ", "_");
-		for (TR_LANG state : values())
+		for (LANG_TR state : values())
 		{
 			if (state.language.equalsIgnoreCase(input))
 			{

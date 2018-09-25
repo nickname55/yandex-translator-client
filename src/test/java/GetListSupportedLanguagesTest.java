@@ -1,4 +1,4 @@
-import com.pampushko.translators.enums.TR_LANG;
+import com.pampushko.translators.enums.LANG_TR;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ public class GetListSupportedLanguagesTest extends BaseTest
 		String hint = "en,ru,de,tr"; //Список наиболее вероятных языков (им будет отдаваться предпочтение при определении языка текста). Разделитель списка — запятая.
 		String text = "1978 yılında ekonomik reformların uygulanmasından beri Çin ekonomisi, Dünya'nın en hızlı " +
 				"büyüyen ekonomilerinden biri olmuştur."; //турецкий язык
-		TR_LANG language = apiClient.detectTextLanguage(text, hint);
+		LANG_TR language = apiClient.detectTextLanguage(text, hint);
 		
 		System.out.println("получили код языка из переданного образца текста (tr-турецкий)");
 		System.out.println("----------------------------------------------");
@@ -33,6 +33,6 @@ public class GetListSupportedLanguagesTest extends BaseTest
 		System.out.println("----------------------------------------------");
 		System.out.println("Исходный текст:");
 		System.out.println(text);
-		assertEquals(TR_LANG.TURKISH, language);
+		assertEquals(LANG_TR.TURKISH, language);
 	}
 }

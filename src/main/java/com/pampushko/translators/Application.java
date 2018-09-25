@@ -1,6 +1,6 @@
 package com.pampushko.translators;
 
-import com.pampushko.translators.enums.TR_DIRECTION;
+import com.pampushko.translators.enums.DIRECTION_TR;
 import lombok.extern.slf4j.Slf4j;
 import org.cfg4j.provider.ConfigurationProvider;
 
@@ -15,7 +15,7 @@ class Application
 		//создаём клиент
 		ApiClient apiClient = buildApiClient();
 		//выбираем направление перевода (с русского на английский)
-		TR_DIRECTION translateDirection = TR_DIRECTION.RU_EN;
+		DIRECTION_TR translateDirection = DIRECTION_TR.RU_EN;
 		//исходный текст
 		String sourceText = "Том так и не смог сказать Мэри, что любит её.";
 		//выполняем перевод
