@@ -11,7 +11,7 @@
 	<artifactId>yandex-translator-client</artifactId>
 	<version>6.0.1</version>
 	<name></name>
-	<description>Пример javaFx desktop приложения, которое обращается Yandex Translator API и выполняет
+	<description>Пример приложения, которое обращается Yandex Translator API и выполняет
 		перевод текста
 	</description>
 	<packaging>jar</packaging>
